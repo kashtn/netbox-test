@@ -1,6 +1,7 @@
 # netbox-test
 
 ### `yarn`
+To download all dependencies
 
 ## Next
 
