@@ -38,15 +38,12 @@
 }
 
 .mainContainer {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .container {
   max-width: 1000px;
-  height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -106,17 +103,32 @@ p {
 }
 
 table {
-  border: 1px solid black;
   border-collapse: collapse;
   margin: 5px;
+  border: 1px solid black;
 }
-td, th {
+thead{
+  border: 1px solid black;
+}
+tbody{
+  border: 1px solid black;
+}
+th{
+  border: 1px solid black;
+}
+td{
+  border: 1px solid black;
+}
+td,
+th {
   padding: 10px;
+  
 }
 .visible {
   visibility: hidden;
 }
 button {
+  max-width: 100px;
   padding: 8px 20px;
   background-color: rgb(62, 78, 167);
   color: white;
@@ -133,3 +145,4 @@ button:hover {
 button:active {
   background: linear-gradient(rgb(177, 179, 189), rgb(41, 59, 160));
 }
+

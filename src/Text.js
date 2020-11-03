@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "@material-ui/core/Button";
 
 export default function Text() {
   const [visible, setVisible] = useState(false);
@@ -9,9 +8,9 @@ export default function Text() {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={showText}>
+      <button onClick={showText}>
         Toggle text
-      </Button>
+      </button>
       <div
         style={{ display: visible ? "block" : "none" }}
         className="container"

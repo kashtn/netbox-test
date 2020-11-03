@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
 
 export default function Table() {
   const [data, setData] = useState();
@@ -18,8 +17,7 @@ export default function Table() {
     getData();
   }, []);
 
-  async function addPerson(e) {
-    e.target.setAttribute("disabled", "true");
+  async function addPerson() {
     setData((prevData) => {
       return [
         ...prevData,
@@ -116,51 +114,55 @@ export default function Table() {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={showTable}>
-        Toggle table
-      </Button>
+      <button onClick={showTable}>Toggle table</button>
       <div style={{ display: visible ? "inline-block" : "none" }}>
-        <table border="1" align="center">
+        <table align="center">
           {data &&
             data.map((group) => (
-              <tr key={group[0].value} id={Math.random()}>
-                {group.map((person) => (
-                  <>
-                    <th key={Math.random()}>{person.field}:</th>
-                    <td key={Math.random()}>{person.value}</td>
-                  </>
-                ))}
-                <td>
-                  <button
-                    className="editButton"
-                    onClick={(e) => {
-                      editPerson(group, e);
-                    }}
-                  >
-                    edit
-                  </button>
-                  <button
-                    className="deleteButton"
-                    onClick={() => {
-                      deletePerson(group);
-                    }}
-                  >
-                    delete
-                  </button>
-                </td>
-              </tr>
+              <>
+                <thead>
+                  <tr>
+                    {group.map((person) => (
+                      <>
+                        <th key={Math.random()}>{person.field}</th>
+                        {person.field === "E-mail" && <th></th>}
+                      </>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr key={group[0].value} id={Math.random()}>
+                    {group.map((person) => (
+                      <>
+                        <td key={Math.random()}>{person.value}</td>
+                      </>
+                    ))}
+                    <th>
+                      <button
+                        className="editButton"
+                        onClick={(e) => {
+                          editPerson(group, e);
+                        }}
+                      >
+                        edit
+                      </button>
+                      <button
+                        className="deleteButton"
+                        onClick={() => {
+                          deletePerson(group);
+                        }}
+                      >
+                        delete
+                      </button>
+                    </th>
+                  </tr>
+                </tbody>
+              </>
             ))}
         </table>
-        <Button
-          variant="contained"
-          color="primary"
-          id="addButton"
-          onClick={(e) => {
-            addPerson(e);
-          }}
-        >
+        <button id="addButton" onClick={addPerson}>
           Add new
-        </Button>
+        </button>
 
         <h3>Всего: {data && data.length}</h3>
       </div>
